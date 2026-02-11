@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Style Sense – Smart Wardrobe Stylist",
+  "description": "A sophisticated digital wardrobe manager that uses GenAI to analyze your clothing and generate personalized, occasion-based outfit recommendations.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
