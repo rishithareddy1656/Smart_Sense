@@ -3,10 +3,18 @@ import { GoogleGenAI, Type } from "@google/genai";
 import { WardrobeItem, OutfitRecommendation, Category, Style } from "../types";
 
 // Initialize the Google GenAI client
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!apiKey) {
+  throw new Error("VITE_GEMINI_API_KEY is missing in .env file");
+}
+
+const ai = new GoogleGenAI({ apiKey });
+
 
 export const analyzeClothingImage = async (base64Image: string): Promise<Partial<WardrobeItem>> => {
-  const model = 'gemini-3-flash-preview';
+  const model = 'gemini-1.5-flash';
+
   
   const prompt = `Analyze this clothing item image strictly. 
   Return a valid JSON object with the following fields:
@@ -68,7 +76,8 @@ export const generateOutfitRecommendations = async (
   selectedItemId?: string
 ): Promise<OutfitRecommendation[]> => {
   // Using Gemini 3 Pro for high-quality reasoning
-  const model = 'gemini-3-pro-preview';
+  const model = 'gemini-1.5-flash';
+
 
   const wardrobeContext = wardrobe.map(item => 
     `- [ID: ${item.id}] ${item.type} (${item.category}, ${item.color}, ${item.fabric}, Style: ${item.style})`
@@ -144,7 +153,8 @@ export const generateOutfitRecommendations = async (
 };
 
 export const getMarketplacePairing = async (marketplaceItem: string, wardrobe: WardrobeItem[]): Promise<string> => {
-  const model = 'gemini-3-flash-preview';
+  const model = 'gemini-1.5-flash';
+
   
   // Summarize wardrobe to keep context small
   const wardrobeSummary = wardrobe.map(i => `${i.color} ${i.type}`).slice(0, 15).join(', ');
