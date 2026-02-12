@@ -1,20 +1,161 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+🧥✨ Smart Wardrobe Stylist
 
-# Run and deploy your AI Studio app
+AI-powered personal styling assistant that transforms your wardrobe into a smart fashion advisor.
 
-This contains everything you need to run your app locally.
+Smart Wardrobe Stylist is an intelligent web application that helps users upload clothing items, organize their digital wardrobe, and receive smart outfit recommendations based on color harmony, style compatibility, and occasion.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1quvoEuwgpdM7y2n-ORKzb3Zn8PfEa3wL
+Built using React + TypeScript + Vite + Google Gemini AI, this project combines structured AI reasoning with modern frontend development.
 
-## Run Locally
+🚀 Features
+👕 Digital Wardrobe
 
-**Prerequisites:**  Node.js
+Upload clothing images
+
+AI extracts:
+
+Clothing type
+
+Primary color
+
+Fabric
+
+Category (Tops, Bottoms, Dresses, etc.)
+
+Style (Casual, Formal, Business, Party, Sporty)
+
+Items stored locally per user
+
+👗 Smart Outfit Recommendations
+
+Generate intelligent outfit combinations based on:
+
+Occasion
+
+Selected wardrobe item
+
+Color harmony
+
+Style alignment
+
+Category compatibility (Top + Bottom logic)
+
+Each recommendation includes:
+
+Outfit title
+
+Items used
+
+Accessories suggestions
+
+Footwear suggestion
+
+Styling rationale
+
+Shopping suggestions
+
+🛍 Marketplace Pairing
+
+Before buying a new item, get insights on:
+
+“How will this piece pair with your existing wardrobe?”
+
+Encourages smart and sustainable shopping decisions.
+
+🧠 How It Works
+
+User uploads clothing images.
+
+Gemini AI analyzes attributes.
+
+Wardrobe items are structured into formatted context:
+
+ID | Type | Color | Fabric | Category | Style
 
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+AI receives strict compatibility rules.
+
+Model generates exactly 3 structured outfit recommendations in JSON format.
+
+UI renders results dynamically.
+
+🏗 Tech Stack
+Frontend
+
+React
+
+TypeScript
+
+Vite
+
+Tailwind CSS
+
+AI
+
+Google Gemini 1.5 Pro
+
+Structured JSON output schema
+
+Controlled temperature configuration
+
+Storage
+
+Browser Local Storage (per user)
+
+📂 Project Structure
+smart-wardrobe-stylist/
+│
+├── components/           Reusable UI components
+├── pages/                Application pages
+│   ├── Home.tsx
+│   ├── Dashboard.tsx
+│   ├── Upload.tsx
+│   ├── Recommendations.tsx
+│   └── Marketplace.tsx
+│
+├── services/
+│   └── geminiServices.ts
+│
+├── types.ts
+├── App.tsx
+├── index.tsx
+├── vite.config.ts
+└── README.md
+
+⚙️ Installation & Setup
+Prerequisites
+
+Node.js (v18+ recommended)
+
+Google Gemini API Key
+
+1️⃣ Clone Repository
+git clone https://github.com/your-username/smart-wardrobe-stylist.git
+cd smart-wardrobe-stylist
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Configure Environment Variables
+
+Create a .env file in the root folder:
+
+VITE_GEMINI_API_KEY=your_api_key_here
+
+
+⚠️ Important:
+
+Do NOT commit .env file
+
+Restart server after adding the key
+
+4️⃣ Run Development Server
+npm run dev
+
+
+Open:
+
+http://localhost:3000
+
+🔐 Environment Variables
+Variable	Description
+VITE_GEMINI_API_KEY	Google Gemini API Key
